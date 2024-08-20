@@ -1,0 +1,63 @@
+.card {
+  width: calc(50% - 1rem);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust margin to create space between cards */
+.card:not(:nth-child(2n)) {
+  margin-right: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.cardDate {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.checkboxHiddenContainer {
+  display: inline-block;
+}
+
+.checkboxHidden {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.25rem;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkboxHidden:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.checkboxHidden:checked::after {
+  content: "";
+  position: absolute;
+  top: 0.25rem;
+  left: 0.625rem;
+  width: 0.375rem;
+  height: 0.75rem;
+  border: solid white;
+  border-width: 0 0.125rem 0.125rem 0;
+  transform: rotate(45deg);
+}

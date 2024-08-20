@@ -1,0 +1,36 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0; /* Reset default margin to ensure the layout fills the entire viewport */
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+footer {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Basic button style */
+button {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff; /* Adjust background color as desired */
+  color: #333; /* Adjust text color as desired */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #f5f5f5; /* Adjust hover background color as desired */
+}

@@ -1,0 +1,8 @@
+/* index.module.css */
+
+.projectContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2rem;
+}
