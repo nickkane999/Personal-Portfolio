@@ -1,69 +1,67 @@
+// pages/api/projects.ts
 import { NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
-export async function GET() {
+// MongoDB URI and client setup
+const uri = "mongodb+srv://nickkane999:HCoIWW0AXKsb3vg3@cluster0.fjl9t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+
+export async function GET(request: Request) {
   try {
-    // Read the tasks data from the JSON file
-    const filePath = path.join(process.cwd(), "data/tasks.json");
-    const jsonData = await fs.readFile(filePath, "utf8");
-    const cachedTasks = JSON.parse(jsonData); // Cache data for future use
+    // Connect to MongoDB, select the database and collection
+    await client.connect();
+    const db = client.db("content"); // Replace with your actual DB name
+    const collection = db.collection("projects");
 
-    // Send the tasks data in the response
-    return NextResponse.json(cachedTasks);
+    // Do not return hidden records if specified in query parameter
+    const url = new URL(request.url);
+    const showHidden = url.searchParams.get("showHidden") === "true";
+    const query: Record<string, any> = {};
+    if (!showHidden) {
+      query.hidden = false;
+    }
+
+    // Retrieve the projects
+    const projects = await collection.find(query).toArray();
+    return NextResponse.json(projects);
   } catch (error) {
-    console.error("Error fetching tasks:", error);
-    return NextResponse.json({ message: "Error fetching tasks" }, { status: 500 });
+    // Report error if it's thrown
+    console.error("Error fetching projects:", error);
+    return NextResponse.json({ message: "Error fetching projects" }, { status: 500 });
+  } finally {
+    await client.close();
   }
 }
 
 export async function POST(request: Request) {
   try {
-    console.log("hello from contact apizzzz");
-    // Get the form data from the request body
-    const formData = await request.json();
-    const { id, title, description, startDate, endDate, estimatedTime, hidden } = formData;
+    // Parse the request body
+    const projectData = await request.json();
 
-    // Read the existing tasks data from the JSON file
-    const filePath = path.join(process.cwd(), "data/tasks.json");
-    const jsonData = await fs.readFile(filePath, "utf8");
-    const tasks = JSON.parse(jsonData);
-    console.log(formData);
+    // Connect to MongoDB
+    await client.connect();
 
-    // Find the index of the task with the provided ID
-    let taskIndex = Object.keys(tasks).findIndex((key) => {
-      console.log(key);
-      console.log(id);
-      return key == id;
-    });
+    // Select the database and collection
+    const db = client.db("myPortfolioDB"); // Replace with your actual DB name
+    const collection = db.collection("projects");
 
-    // If the task with the provided ID is found, update its properties
-    if (taskIndex !== -1) {
-      console.log("hello from contact apizzz");
-      let taskIndexString = (taskIndex + 1).toString();
-      tasks[taskIndexString] = {
-        id,
-        title,
-        description,
-        startDate,
-        endDate,
-        estimatedTime,
-        hidden,
-      };
+    // Insert the new project into the database
+    const result = await collection.insertOne(projectData);
 
-      // Write the updated tasks data back to the JSON file
-      await fs.writeFile(filePath, JSON.stringify(tasks, null, 2), "utf8");
-
-      // Send a success response
-      return NextResponse.json({ message: "Task updated successfully" });
-    } else {
-      // If the task with the provided ID is not found, send a 404 response
-      NextResponse.json({ message: "Form data received and saved successfully" });
-      return NextResponse.json({ message: "Task not found" }, { status: 404 });
-    }
+    // Send a success response
+    return NextResponse.json({ message: "Project added successfully", insertedId: result.insertedId });
   } catch (error) {
-    console.error("Error updating task:", error);
-    return NextResponse.json({ message: "Error updating task" }, { status: 500 });
+    console.error("Error adding project:", error);
+    return NextResponse.json({ message: "Error adding project" }, { status: 500 });
+  } finally {
+    // Ensure that the client will close when you finish/error
+    await client.close();
   }
 }
 
