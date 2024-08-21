@@ -52,9 +52,6 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error adding project:", error);
     return NextResponse.json({ message: "Error adding project" }, { status: 500 });
-  } finally {
-    // Ensure that the client will close when you finish/error
-    await client.close();
   }
 }
 
