@@ -1,16 +1,6 @@
 // pages/api/projects.ts
 import { NextResponse } from "next/server";
-import { MongoClient, ServerApiVersion } from "mongodb";
-
-// MongoDB URI and client setup
-const uri = "mongodb+srv://nickkane999:HCoIWW0AXKsb3vg3@cluster0.fjl9t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+import client from "@/util/api/mongodb";
 
 export async function GET(request: Request) {
   try {
@@ -65,6 +55,4 @@ export async function POST(request: Request) {
   }
 }
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "nodejs";

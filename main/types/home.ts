@@ -15,7 +15,6 @@ export interface ProjectInterface {
   hidden: boolean;
 }
 
-// Define the types for the project
 export type ProjectType = {
   title: string;
   description: string;
@@ -24,3 +23,10 @@ export type ProjectType = {
   endDate: string;
   estimatedTime: string;
 };
+
+export interface DefaultProps {
+  model: {
+    title: string;
+    html: string;
+  };
+}
