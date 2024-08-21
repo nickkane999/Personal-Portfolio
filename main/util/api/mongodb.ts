@@ -1,10 +1,10 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 // Read the MongoDB URI from environment variables
-const uri = process.env.MONGO_URI;
+let uri = process.env.MONGO_URI;
 
 if (!uri) {
-  throw new Error("MONGO_URI is not defined in the environment variables");
+  uri = "mongodb+srv://nickkane999:HCoIWW0AXKsb3vg3@cluster0.fjl9t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; // Default user who can read any DB, but not write to any DB
 }
 
 const client = new MongoClient(uri, {
