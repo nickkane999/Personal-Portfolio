@@ -1,10 +1,9 @@
 // pages/api/projects.ts
 import { NextResponse } from "next/server";
-//import client from "@/util/api/mongodb";
+import client from "@/util/api/mongodb";
 
 export async function GET(request: Request) {
   try {
-    /*
     // Connect to MongoDB, select the database and collection
     await client.connect();
     const db = client.db("content"); // Replace with your actual DB name
@@ -21,8 +20,6 @@ export async function GET(request: Request) {
     // Retrieve the projects
     const projects = await collection.find(query).toArray();
     return NextResponse.json(projects);
-    */
-    return NextResponse.json({ message: "Testing api call is valid" });
   } catch (error) {
     // Report error if it's thrown
     console.error("Error fetching projects:", error);
