@@ -47,7 +47,7 @@ const FormDefault: React.FC<FormDefaultProps> = ({ formModel }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} mt-10`}>
       <form onSubmit={handleSubmit} className={styles.form}>
         {form.map((field, index) =>
           field.type === "textarea" ? (

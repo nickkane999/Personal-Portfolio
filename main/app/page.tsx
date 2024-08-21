@@ -1,9 +1,7 @@
-import Image from "next/image";
 import "./styles.css";
-import Link from "next/link";
 import Banner from "@/components/general/Banner";
 import DataGrid from "@/components/general/DataGrid"; // Import the DataGrid component
-import ProjectsRow from "@/components/page_specific/ProjectsRow";
+import ProjectsRow from "@/components/site_specific/ProjectsRow";
 import Default from "@/components/general/Default";
 import banner_model from "@/data/models/home/banner.json"; // Import the model.json file
 import focus_areas_model from "@/data/models/home/focus_areas.json"; // Import the model.json file

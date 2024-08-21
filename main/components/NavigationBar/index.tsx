@@ -5,10 +5,7 @@ import styles from "./index.module.css";
 
 const navigationData = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
-  { name: "Backlog", href: "/projects/backlog" },
-  { name: "GPT", href: "/admin/gpt" },
 ];
 
 const NavigationBar = () => {
