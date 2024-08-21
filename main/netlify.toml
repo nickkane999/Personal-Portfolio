@@ -1,0 +1,19 @@
+# netlify.toml
+
+[build]
+  command = "npm run build"
+  base = "main"            # Base directory where your Next.js project is located
+  publish = ".next"        # Directory where Next.js build output is located
+
+[redirects]
+  # Redirect all non-existent paths to the Next.js app's index page
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+[functions]
+  directory = "main/netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
