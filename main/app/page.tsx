@@ -6,20 +6,9 @@ import Default from "@/components/general/Default";
 import banner_model from "@/data/models/home/banner.json"; // Import the model.json file
 import focus_areas_model from "@/data/models/home/focus_areas.json"; // Import the model.json file
 import about_me_model from "@/data/models/home/about_me.json"; // Import the model.json file
+import { ProjectInterface } from "@/types/home";
 
-interface Project {
-  _id: string;
-  id: number;
-  title: string;
-  description: string;
-  github_link: string;
-  startDate: string;
-  endDate: string;
-  estimatedTime: string;
-  hidden: boolean;
-}
-
-async function fetchProjects(showHidden: boolean): Promise<Project[]> {
+async function fetchProjects(showHidden: boolean): Promise<ProjectInterface[]> {
   const response = await fetch("http://localhost:3000/api/projects", { cache: "force-cache" });
   if (!response.ok) {
     throw new Error("Failed to fetch projects");

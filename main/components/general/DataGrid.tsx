@@ -1,17 +1,8 @@
 import React from "react";
-
-// Define the types for the model
-type FocusArea = {
-  title: string;
-  description: string;
-};
-
-type Model = {
-  focusAreas: FocusArea[];
-};
+import { DataGridProps } from "@/types/general";
 
 // The DataGrid component receives a model prop
-const DataGrid: React.FC<{ model: Model }> = ({ model }) => {
+const DataGrid: React.FC<{ model: DataGridProps }> = ({ model }) => {
   return (
     <div>
       <h2 className="text-3xl font-bold text-primary dark:text-white mt-8 p-8">Focus areas</h2>

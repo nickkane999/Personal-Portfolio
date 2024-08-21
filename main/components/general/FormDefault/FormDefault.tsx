@@ -2,17 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./index.module.css";
-
-interface FormDefaultProps {
-  formModel: {
-    form: Array<{
-      name: string;
-      label: string;
-      type: string;
-      required: boolean;
-    }>;
-  };
-}
+import { FormDefaultProps } from "@/types/contact";
 
 const FormDefault: React.FC<FormDefaultProps> = ({ formModel }) => {
   const { form } = formModel;

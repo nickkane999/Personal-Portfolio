@@ -1,16 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
-interface BannerProps {
-  model: {
-    title: string;
-    description: string;
-    cta: {
-      text: string;
-      link: string;
-    };
-  };
-}
+import { BannerProps } from "@/types/general";
 
 const Banner: React.FC<BannerProps> = ({ model }) => {
   return (

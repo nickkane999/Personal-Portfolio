@@ -1,12 +1,6 @@
 import React from "react";
 import parse from "html-react-parser";
-
-interface DefaultProps {
-  model: {
-    title: string;
-    html: string;
-  };
-}
+import { DefaultProps } from "@/types/home";
 
 const Default: React.FC<DefaultProps> = ({ model }) => {
   let html = model.html;

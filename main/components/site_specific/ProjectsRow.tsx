@@ -1,15 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
-// Define the types for the project
-type Project = {
-  title: string;
-  description: string;
-  github_link: string;
-  startDate: string;
-  endDate: string;
-  estimatedTime: string;
-};
+import { ProjectType } from "@/types/home";
 
 // Function to format the date if possible, otherwise return the original string
 const formatDate = (dateString: string) => {
@@ -19,7 +10,7 @@ const formatDate = (dateString: string) => {
 };
 
 // The DataRow component receives a projects prop
-const ProjectsRow: React.FC<{ projects: Project[] }> = ({ projects }) => {
+const ProjectsRow: React.FC<{ projects: ProjectType[] }> = ({ projects }) => {
   return (
     <div className="projects-row">
       <h2 className="text-3xl font-bold text-primary dark:text-white mt-8 p-8">Projects</h2>
