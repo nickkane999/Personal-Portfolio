@@ -11,13 +11,19 @@ import { ProjectInterface } from "@/types/home";
 async function fetchProjects(showHidden: boolean): Promise<ProjectInterface[] | false> {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   try {
+    console.log("Trying response");
     const response = await fetch(`${apiUrl}/api/projects`, { cache: "force-cache" });
+    console.log("Response received");
 
     if (!response.ok) {
+      console.log("Response not ok");
+      console.log(response);
       //console.error(`Failed to fetch projects from ${apiUrl}`);
       //throw new Error(`Failed to fetch projects from ${apiUrl}`);
       return false;
     } else {
+      console.log("Response ok");
+      console.log(response);
       const projects: ProjectInterface[] = await response.json();
       return projects;
     }

@@ -27,8 +27,6 @@ export async function GET(request: Request) {
     // Report error if it's thrown
     console.error("Error fetching projects:", error);
     return NextResponse.json({ message: "Error fetching projects" }, { status: 500 });
-  } finally {
-    await client.close();
   }
 }
 
