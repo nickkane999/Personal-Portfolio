@@ -24,8 +24,6 @@ export async function GET(request: Request) {
     // Report error if it's thrown
     console.error("Error fetching projects:", error);
     return NextResponse.json({ message: "Error fetching projects" }, { status: 500 });
-  } finally {
-    await client.close();
   }
 }
 
@@ -49,9 +47,6 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error adding project:", error);
     return NextResponse.json({ message: "Error adding project" }, { status: 500 });
-  } finally {
-    // Ensure that the client will close when you finish/error
-    await client.close();
   }
 }
 
