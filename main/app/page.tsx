@@ -9,10 +9,13 @@ import about_me_model from "@/data/models/home/about_me.json"; // Import the mod
 import { ProjectInterface } from "@/types/home";
 
 async function fetchProjects(showHidden: boolean): Promise<ProjectInterface[]> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects`, { cache: "force-cache" });
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const response = await fetch(`${apiUrl}/api/projects`, { cache: "force-cache" });
+
   if (!response.ok) {
-    throw new Error("Failed to fetch projects");
+    throw new Error(`Failed to fetch projects from ${apiUrl}`);
   }
+
   return response.json();
 }
 
