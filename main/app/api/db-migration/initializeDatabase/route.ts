@@ -1,21 +1,7 @@
 import { NextResponse } from "next/server";
-import { MongoClient, ServerApiVersion } from "mongodb";
 import fs from "fs";
 import path from "path";
-
-// MongoDB URI and client setup
-const uri = process.env.MONGO_URI;
-
-if (!uri) {
-  throw new Error("MONGO_URI is not defined in the environment variables");
-}
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+import client from "@/util/api/mongodb";
 
 // Path to the JSON file
 const jsonFilePath = path.join(process.cwd(), "data", "db-migration", "projects.json");
@@ -47,6 +33,4 @@ export async function POST() {
   }
 }
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "nodejs";

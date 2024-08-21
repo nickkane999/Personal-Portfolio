@@ -7,7 +7,7 @@ import { FormDefaultProps } from "@/types/contact";
 const FormDefault: React.FC<FormDefaultProps> = ({ formModel }) => {
   const { form } = formModel;
 
-  const [formData, setFormData] = useState(form.reduce((acc, field) => ({ ...acc, [field.name]: "" }), {}));
+  const [formData, setFormData] = useState<any>(form.reduce((acc, field) => ({ ...acc, [field.name]: "" }), {}));
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
