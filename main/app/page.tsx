@@ -18,10 +18,7 @@ export default function Home() {
     const fetchData = async () => {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       try {
-        console.log("Trying response");
-        const response = await fetch(`${apiUrl}/api/projects`, { cache: "force-cache" });
-        console.log("Response received");
-
+        const response = await fetch(`${apiUrl}/api/projects`, { cache: "default" });
         if (!response.ok) {
           console.log("Response not ok");
           console.log(response);
