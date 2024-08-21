@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import path from "path";
-import { writeToTextFile } from "@/util/api/fileManagement";
+import client from "@/util/api/mongodb";
 
 export async function POST(request: Request) {
   try {
@@ -8,16 +7,31 @@ export async function POST(request: Request) {
     const formData = await request.json();
     const { firstName, lastName, email, company, description } = formData;
 
-    // Write the form data to the contact_requests.txt file
-    const formDataString = `First Name: ${firstName},Last Name: ${lastName},Email: ${email},Company: ${company},Description: ${description}\n`;
-    const filePath = path.join(process.cwd(), "data", "contact_requests.txt");
-    writeToTextFile(formDataString, filePath);
+    // Connect to MongoDB
+    await client.connect();
+
+    // Select the database and collection
+    const db = client.db("content"); // Replace with your actual DB name
+    const collection = db.collection("contactRequests"); // Replace with your desired collection name
+
+    // Insert the form data into the collection
+    const result = await collection.insertOne({
+      firstName,
+      lastName,
+      email,
+      company,
+      description,
+      timestamp: new Date(), // Optional: add a timestamp
+    });
 
     // Send a success response
-    return NextResponse.json({ message: "Form data received and saved successfully" });
+    return NextResponse.json({ message: "Form data received and saved successfully", insertedId: result.insertedId });
   } catch (error) {
     console.error("Error submitting form:", error);
     return NextResponse.json({ message: "Error submitting form" }, { status: 500 });
+  } finally {
+    // Ensure that the client will close when you finish/error
+    await client.close();
   }
 }
 
