@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import "./styles.css";
 import Banner from "@/components/general/Banner";
 import DataGrid from "@/components/general/DataGrid";
@@ -8,33 +11,34 @@ import focus_areas_model from "@/data/models/home/focus_areas.json";
 import about_me_model from "@/data/models/home/about_me.json";
 import { ProjectInterface } from "@/types/home";
 
-async function fetchProjects(showHidden: boolean): Promise<ProjectInterface[] | false> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  try {
-    console.log("Trying response");
-    const response = await fetch(`${apiUrl}/api/projects`, { cache: "force-cache" });
-    console.log("Response received");
+export default function Home() {
+  const [projects, setProjects] = useState<ProjectInterface[] | false>(false);
 
-    if (!response.ok) {
-      console.log("Response not ok");
-      console.log(response);
-      //console.error(`Failed to fetch projects from ${apiUrl}`);
-      //throw new Error(`Failed to fetch projects from ${apiUrl}`);
-      return false;
-    } else {
-      console.log("Response ok");
-      console.log(response);
-      const projects: ProjectInterface[] = await response.json();
-      return projects;
-    }
-  } catch (error) {
-    //console.error(`Error fetching projects: ${error.message}`);
-    return false;
-  }
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      try {
+        console.log("Trying response");
+        const response = await fetch(`${apiUrl}/api/projects`, { cache: "force-cache" });
+        console.log("Response received");
 
-export default async function Home() {
-  const projects = await fetchProjects(false);
+        if (!response.ok) {
+          console.log("Response not ok");
+          console.log(response);
+        } else {
+          console.log("Response ok");
+          const projects: ProjectInterface[] = await response.json();
+          console.log("Projects received");
+          console.log(projects);
+          setProjects(projects);
+        }
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
