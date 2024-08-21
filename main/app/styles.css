@@ -102,6 +102,17 @@ h6 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
 }
+/* Projects section */
+.projects-row a {
+  background-color: #38b2ac;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.projects-row a:hover {
+  background-color: #007bff;
+}
 
 /* About Me Section */
 .about-me {
@@ -113,40 +124,4 @@ h6 {
   line-height: 1.5;
   max-width: 700px;
   margin: 0 auto;
-}
-
-/* Contact Section */
-.contact {
-  background-color: #f0f0f0;
-  padding: 4rem 0;
-}
-
-.contact form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.contact input,
-.contact textarea {
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-.contact textarea {
-  height: 100px;
-}
-
-.contact button {
-  background-color: #38b2ac;
-  padding: 10px 20px;
-  border-radius: 5px;
-  color: #fff;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
 }
