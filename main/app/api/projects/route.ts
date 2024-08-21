@@ -32,7 +32,6 @@ export async function POST(request: Request) {
     // Parse the request body
     const projectData = await request.json();
 
-    /*
     // Connect to MongoDB
     await client.connect();
 
@@ -45,7 +44,6 @@ export async function POST(request: Request) {
 
     // Send a success response
     return NextResponse.json({ message: "Project added successfully", insertedId: result.insertedId });
-    */
   } catch (error) {
     console.error("Error adding project:", error);
     return NextResponse.json({ message: "Error adding project" }, { status: 500 });
