@@ -45,7 +45,6 @@ h6 {
 
 /* Hero Section */
 .hero {
-  background-image: url("/path/to/hero-image.jpg"); /* Replace with your image path */
   background-size: cover;
   background-position: center;
   min-height: 50vh;
