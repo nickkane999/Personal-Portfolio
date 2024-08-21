@@ -1,0 +1,36 @@
+{
+  "title": "Contact",
+  "html": "<p>I'm passionate about using Artificial Intelligence (AI) to help businesses grow and achieve their goals. AI has the potential to revolutionize various aspects of business operations, from marketing and sales to customer service and product development.</p><p>I'm here to help you leverage the power of AI in your specific industry. Whether you're interested in implementing any of the projects I've listed on my website, or you have a unique challenge you'd like to discuss, feel free to reach out to me. I'm always happy to explore new opportunities and collaborate on innovative solutions using AI.</p>",
+  "form": [
+    {
+      "name": "firstName",
+      "label": "First Name:",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "lastName",
+      "label": "Last Name:",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "email",
+      "label": "Email:",
+      "type": "email",
+      "required": true
+    },
+    {
+      "name": "company",
+      "label": "Company:",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "description",
+      "label": "Description:",
+      "type": "textarea",
+      "required": false
+    }
+  ]
+}

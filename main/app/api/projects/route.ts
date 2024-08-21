@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     await client.connect();
 
     // Select the database and collection
-    const db = client.db("myPortfolioDB"); // Replace with your actual DB name
+    const db = client.db("content"); // Replace with your actual DB name
     const collection = db.collection("projects");
 
     // Insert the new project into the database

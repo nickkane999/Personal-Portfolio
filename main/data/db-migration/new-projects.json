@@ -1,0 +1,32 @@
+{
+  "1": {
+    "id": 1,
+    "title": "ChronoSync",
+    "description": "Script Library to track when activities are ready to review/start. Tabs allow users to define and start timers, and assign macros to complete activities",
+    "github_link": "https://github.com/nickkane999/ChronoSync",
+    "startDate": "2023-08-01",
+    "endDate": "2023-08-19",
+    "estimatedTime": "40 Hours",
+    "hidden": false
+  },
+  "2": {
+    "id": 2,
+    "title": "FilmFolio",
+    "description": "Directory app allowing you to upload and view your own videos. Requires a dedicated server to host the video files",
+    "github_link": null,
+    "startDate": "2023-09-01",
+    "endDate": "2023-10-31",
+    "estimatedTime": "60 Hours",
+    "hidden": true
+  },
+  "3": {
+    "id": 3,
+    "title": "ChainGrab",
+    "description": "Website allowing users to scrape data from the web, store it to their profile, and save it for personal use",
+    "github_link": null,
+    "startDate": "2023-10-01",
+    "endDate": "2023-12-30",
+    "estimatedTime": "120 Hours",
+    "hidden": true
+  }
+}

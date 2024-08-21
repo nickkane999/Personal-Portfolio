@@ -1,0 +1,20 @@
+{
+  "focusAreas": [
+    {
+      "title": "AI Systems",
+      "description": "Creating new systems that improve the customer experience on web and mobile applications."
+    },
+    {
+      "title": "Backend Development",
+      "description": "Storing and processing information in efficient ways to make applications easier to maintain."
+    },
+    {
+      "title": "Frontend Development",
+      "description": "Designing layouts and processes for developers to use CMS internally, and users to have valuable experiences."
+    },
+    {
+      "title": "Scripting",
+      "description": "Using automation to augment my experiences with different hobbies and accelerate progress."
+    }
+  ]
+}
