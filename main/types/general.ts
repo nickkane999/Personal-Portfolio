@@ -1,4 +1,3 @@
-import { DataGridProps } from "@/types/general";
 export interface BannerProps {
   model: {
     title: string;
